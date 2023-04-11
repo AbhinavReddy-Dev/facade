@@ -4,7 +4,7 @@ import { ShoppingCart } from "./cart";
 import { ShoppingFacade } from "./facade";
 
 // without Facade Class
-console.log("\n\nWithout Facade Class");
+console.log("\n\n** Without Facade Class **");
 const productCatalog = new ProductCatalog();
 const shoppingCart = new ShoppingCart();
 
@@ -59,30 +59,32 @@ console.log(
 );
 //
 
-console.log("\nFacade Class");
+console.log("\n** Facade Class **");
 
-const mobileShoppingFacade = new ShoppingFacade();
+//
+const shoppingFacade = new ShoppingFacade();
 
 // Get list of products
-const products = mobileShoppingFacade.getProductList();
+const products = shoppingFacade.getProductList();
 console.log("\nProduct Catalog: ", products);
 
 // Add product to cart
-mobileShoppingFacade.addToCart(1);
+shoppingFacade.addToCart(1);
 
 // Add product to cart
-mobileShoppingFacade.addToCart(2);
+shoppingFacade.addToCart(2);
 
 // Add product to cart
-mobileShoppingFacade.addToCart(1);
+shoppingFacade.addToCart(1);
 
 // Get items in cart
-const cartItems = mobileShoppingFacade.getCartItems();
+const cartItems = shoppingFacade.getCartItems();
 console.log("\nShopping Cart: ", cartItems);
 
 // Remove an item
-mobileShoppingFacade.removeFromCart(1, 1);
+shoppingFacade.removeFromCart(1, 1);
+
 // Checkout
-mobileShoppingFacade.checkout();
+shoppingFacade.checkout();
 
 console.log("\nProduct Catalog: ", products);
