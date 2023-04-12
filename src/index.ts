@@ -45,7 +45,6 @@ shoppingCart.removeItem(1, 1);
 
 // Checkout
 shoppingCart.checkout();
-
 shoppingCart.getItems().forEach((item: CartItem): void => {
   productCatalog.decrementProductQuantityById(item.product.id, item.quantity);
 });
