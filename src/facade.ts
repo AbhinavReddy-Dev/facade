@@ -36,15 +36,9 @@ class ShoppingFacade {
     return this.shoppingCart.getItems();
   }
 
-  // cart checkout
+  // shopping cart implementation
   public checkout(): void {
-    this.shoppingCart.checkout();
-    this.shoppingCart.getItems().forEach((item: CartItem): void => {
-      this.productCatalog.decrementProductQuantityById(
-        item.product.id,
-        item.quantity
-      );
-    });
+  // code here
   }
 } // End of ShoppingFacade
 
