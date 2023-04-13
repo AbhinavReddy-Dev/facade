@@ -5,9 +5,15 @@ interface Product {
   quantity: number;
 }
 
+interface CartProduct {
+  id: number;
+  name: string;
+  price: number;
+}
+
 interface CartItem {
-  product: Product;
+  product: CartProduct;
   quantity: number;
 }
 
-export { Product, CartItem };
+export { Product, CartProduct, CartItem };

@@ -1,4 +1,4 @@
-import { Product, CartItem } from "./types";
+import { Product, CartProduct, CartItem } from "./types";
 
 // Shopping Cart
 class ShoppingCart {
@@ -17,7 +17,11 @@ class ShoppingCart {
     if (existingItem) {
       existingItem.quantity++;
     } else {
-      this.items.push({ product, quantity: 1 });
+      const _item = JSON.stringify(product);
+      const __item: Product = JSON.parse(_item);
+      delete __item.quantity;
+      const cartProduct: CartProduct = __item;
+      this.items.push({ product: cartProduct, quantity: 1 });
     }
   }
 
@@ -29,18 +33,12 @@ class ShoppingCart {
     }
     // updating cart
     this.items = this.items.filter((_item) => _item.quantity > 0);
+    console.log(`\nRemoved item from cart: ${item.product.name}.`);
   }
 
   // returns all items in the cart
   public getItems(): CartItem[] {
-    const finalItems = this.items.map((item: CartItem) => {
-      // deep cloning cart item
-      const _item = JSON.stringify(item);
-      const __item: CartItem = JSON.parse(_item);
-      delete __item.product.quantity;
-      return __item;
-    });
-    return finalItems;
+    return this.items;
   }
 
   // acknowledges checkout
